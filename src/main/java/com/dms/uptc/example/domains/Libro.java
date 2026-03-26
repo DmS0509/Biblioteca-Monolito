@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Libro {
@@ -14,6 +15,8 @@ public class Libro {
     private String name;
     private String description;
     private String imageUrl;
+    @ManyToOne
+    private Editorial editorial;
 
     public String getName() {
         return name;
@@ -45,6 +48,14 @@ public class Libro {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Editorial getEditorial() {
+        return editorial;
+    }
+
+    public void setEditorial(Editorial editorial) {
+        this.editorial = editorial;
     }
 
 }

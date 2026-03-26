@@ -15,3 +15,25 @@ era casi como si ella viviera en un mundo aparte.','https://amaterasustore.co/wp
 ('Tras las Huellas del Cyberbullying','Tras las huellas del cyberbullying: experiencias de investigación se presenta como un compendio de conocimiento que profundiza en esta clase de acoso.
  Esta obra surge de una colaboración entre el Grupo de Investigación SÍMILES de la Universidad Pedagógica y Tecnológica de Colombia, Seccional Duitama, 
  investigadores de México y la UPTC, y ofrece una visión comprehensiva del en el entorno escolar.','https://simehbucket.s3.amazonaws.com/images/73f70f1551ef423b684c71e53f1afb2e-medium.jpg')
+
+ create table editorial (
+    id int primary key auto_increment,
+    name varchar(200) not null,
+    sitio_web varchar(500)
+ );
+
+ insert into editorial(id, name, sitio_web) values
+ (1, 'Editorial UPTC', 'https://editorial.uptc.edu.co/'),
+ (2, 'Panini', 'https://www.paninicomics.com/'),
+ (3, 'Editorial UPTC', 'https://editorial.uptc.edu.co/');
+
+alter table libro
+add column editorial_id int,
+add foreign key (editorial_id) references editorial(id);
+
+update libro set editorial_id = 1 where id in (1, 3);
+update libro set editorial_id = 2 where id in (2);
+update libro set editorial_id = 3 where id in (3);
+
+alter table libro
+modify editorial_id int not null;
