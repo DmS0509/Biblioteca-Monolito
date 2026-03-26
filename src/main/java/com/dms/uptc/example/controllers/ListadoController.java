@@ -19,8 +19,15 @@ public class ListadoController {
     }
 
     @RequestMapping("/librosPorEditorial")
-    public String listarLibrosPorEditorial(int editorialId, Model model){
+    public String listarLibrosPorEditorial(int editorialId, Model model) {
         List<Libro> libros = libroService.buscarPorEditorial(editorialId);
+        model.addAttribute("libros", libros);
+        return "listado";
+    }
+
+    @RequestMapping("/buscar")
+    public String buscar(String consulta, Model model) {
+        List<Libro> libros = libroService.buscar(consulta);
         model.addAttribute("libros", libros);
         return "listado";
     }

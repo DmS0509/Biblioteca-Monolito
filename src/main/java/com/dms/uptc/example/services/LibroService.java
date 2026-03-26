@@ -23,4 +23,9 @@ public class LibroService {
     public List<Libro> buscarPorEditorial(int editorialId){
         return libroRepository.findByEditorialId(editorialId);
     }
+
+    public List<Libro> buscar(String consulta){
+        return libroRepository.find(consulta);
+    }
+
 }
