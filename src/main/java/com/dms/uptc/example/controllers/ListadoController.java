@@ -1,7 +1,5 @@
 package com.dms.uptc.example.controllers;
 
-import java.util.List;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,15 +18,17 @@ public class ListadoController {
 
     @RequestMapping("/librosPorEditorial")
     public String listarLibrosPorEditorial(int editorialId, Model model) {
-        List<Libro> libros = libroService.buscarPorEditorial(editorialId);
-        model.addAttribute("libros", libros);
+        model.addAttribute("libros", libroService.buscarPorEditorial(editorialId));
+        model.addAttribute("libro", new Libro());                 // Agregado
+        model.addAttribute("editoriales", libroService.buscarDestacados()); // Agregado
         return "listado";
     }
 
     @RequestMapping("/buscar")
     public String buscar(String consulta, Model model) {
-        List<Libro> libros = libroService.buscar(consulta);
-        model.addAttribute("libros", libros);
+        model.addAttribute("libros", libroService.buscar(consulta));
+        model.addAttribute("libro", new Libro());                 // Agregado
+        model.addAttribute("editoriales", libroService.buscarDestacados()); // Agregado
         return "listado";
     }
 }

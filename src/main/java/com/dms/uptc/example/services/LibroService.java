@@ -28,4 +28,8 @@ public class LibroService {
         return libroRepository.find(consulta);
     }
 
+    public Libro guardar(Libro libro){
+        return libroRepository.save(libro);
+    }
+
 }
