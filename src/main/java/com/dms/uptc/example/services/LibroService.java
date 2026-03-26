@@ -20,4 +20,7 @@ public class LibroService {
        return libroRepository.findAll();
     }
 
+    public List<Libro> buscarPorEditorial(int editorialId){
+        return libroRepository.findByEditorialId(editorialId);
+    }
 }

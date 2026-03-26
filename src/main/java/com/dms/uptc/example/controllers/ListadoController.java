@@ -18,10 +18,10 @@ public class ListadoController {
         this.libroService = libroService;
     }
 
-    @RequestMapping("/")
-    public String listarLibros(Model model){
-        List<Libro> destacados = libroService.buscarDestacados();
-        model.addAttribute("libros", destacados);
+    @RequestMapping("/librosPorEditorial")
+    public String listarLibrosPorEditorial(int editorialId, Model model){
+        List<Libro> libros = libroService.buscarPorEditorial(editorialId);
+        model.addAttribute("libros", libros);
         return "listado";
     }
 }
